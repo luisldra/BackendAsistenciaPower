@@ -29,9 +29,13 @@ def read_root():
 @app.post("/students/")
 def create_student(student: Student):
     try:
-        # Crear un estudiante
-        doc_ref = db.collection("students").document()
-        doc_ref.set(student.dict())
+        # Convierte el campo birth_date a cadena en formato ISO 8601
+        student_data = student.dict()
+        student_data['birth_date'] = student.birth_date.isoformat()
+        
+        # Guardar en Firestore
+        doc_ref = db.collection("students").document(student.id)
+        doc_ref.set(student_data)
         return {"message": "Student created", "id": doc_ref.id}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
