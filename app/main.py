@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import db
 from app.models import Student, Group, Attendance
 from datetime import date
-from firebase_config import init_firebase
+from app.firebase_config import init_firebase
 
 init_firebase()
 
