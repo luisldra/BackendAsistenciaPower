@@ -1,0 +1,11 @@
+# Archivos sensibles
+serviceAccountKey.json
+
+# Archivos de configuración de entornos virtuales (opcional)
+venv/
+.env
+
+# Otros archivos innecesarios
+__pycache__/
+*.pyc
+*.pyo
